@@ -3,130 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Respeito & Diversidade - Apoio ao Estudante</title>
+    <title>Portal Respeito & Diversidade</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
             <div class="logo">
-                <i class="fa-solid fa-hands-holding-child"></i> Portal Respeito
+                <i class="fa-solid fa-heart-circle-check"></i>
+                <span>Portal Respeito</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Sobre o Preconceito</a></li>
-                <li><a href="#escuta">Portal de Escuta</a></li>
+                <li><a href="#sobre">Conscientização</a></li>
+                <li><a href="#escuta">Apoio</a></li>
                 <li><a href="#quiz">Quiz</a></li>
-                <li><a href="#referencias">Referências</a></li>
+                <li><a href="#referencias">Recursos</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="inicio" class="hero-section">
-        <div class="hero-content">
-            <h1>Juntos Contra o Preconceito</h1>
-            <p class="welcome-msg">
-                "Bem-vindo ao Portal de Apoio ao Estudante. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar. A escola é um espaço seguro para todos!"
-            </p>
-            <a href="#escuta" class="btn-primary">Precisa conversar? Acesse a Escuta</a>
-        </div>
-    </section>
-
-    <section id="sobre" class="section">
-        <h2>Entendendo o Preconceito</h2>
-        <p>O preconceito ocorre quando julgamos ou discriminamos alguém sem conhecimento prévio, baseado em sua raça, gênero, orientação sexual, condição social ou física.</p>
-        
-        <div class="cards-grid">
-            <div class="card">
-                <i class="fa-solid fa-people-group icon"></i>
-                <h3>Racismo e Injúria</h3>
-                <p>Discriminação ou ofensa motivada por cor, raça ou etnia. Respeitar as origens é dever de todos.</p>
+    <main>
+        <section id="inicio" class="hero-section">
+            <div class="hero-content">
+                <span class="badge">Espaço Seguro & Acolhedor</span>
+                <h1>Construindo um Futuro Livre de Preconceitos</h1>
+                <p class="welcome-msg">
+                    A escola é um ambiente de aprendizado, respeito e diversidade. Ninguém deve se sentir sozinho ou discriminado.
+                </p>
+                <div class="hero-actions">
+                    <a href="#escuta" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Precisa conversar?</a>
+                    <a href="#quiz" class="btn btn-outline"><i class="fa-solid fa-gamepad"></i> Teste seus conhecimentos</a>
+                </div>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-rainbow icon"></i>
-                <h3>LGBTI+fobia</h3>
-                <p>A intolerância quanto à orientação sexual ou identidade de gênero não cabe no ambiente escolar.</p>
+        </section>
+
+        <section id="sobre" class="section container">
+            <div class="section-header">
+                <h2>Entendendo e Combatendo o Preconceito</h2>
+                <p>Respeitar as diferenças é o primeiro passo para uma convivência saudável.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-wheelchair icon"></i>
-                <h3>Capacitismo</h3>
-                <p>Preconceito contra pessoas com deficiência. Promover a acessibilidade e inclusão é fundamental.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon color-1"><i class="fa-solid fa-people-group"></i></div>
+                    <h3>Racismo e Injúria</h3>
+                    <p>Qualquer discriminação baseada na cor, raça ou etnia. Valorizar a diversidade étnica é fundamental para o respeito mútuo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon color-2"><i class="fa-solid fa-rainbow"></i></div>
+                    <h3>LGBTI+fobia</h3>
+                    <p>A rejeição ou intolerância contra a diversidade de gênero e orientação sexual. Todos merecem viver com dignidade.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon color-3"><i class="fa-solid fa-universal-access"></i></div>
+                    <h3>Capacitismo</h3>
+                    <p>Subestimar ou discriminar pessoas com deficiência. Promover a acessibilidade e a inclusão é dever de toda a sociedade.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="escuta" class="section bg-light">
-        <h2><i class="fa-solid fa-heart"></i> Portal de Escuta</h2>
-        <p>Este é um espaço seguro e simulação de desabafo. Nenhuma informação digitada aqui será salva.</p>
-        
-        <div class="escuta-container">
-            <form id="form-escuta">
-                <label for="desabafo">Escreva o que você está sentindo ou presenciando:</label>
-                <textarea id="desabafo" rows="5" placeholder="Digite aqui sua mensagem..." required></textarea>
-                <button type="submit" class="btn-secondary">Enviar Desabafo</button>
-            </form>
+        <section id="escuta" class="section bg-gradient">
+            <div class="container">
+                <div class="escuta-wrapper">
+                    <div class="escuta-info">
+                        <h2><i class="fa-solid fa-hand-holding-heart"></i> Espaço de Escuta</h2>
+                        <p>Este é um espaço seguro de desabafo e reflexão. Suas informações não ficam registradas em nenhum banco de dados público.</p>
+                        <div class="urgency-card">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <div>
+                                <strong>Ajuda imediata e real:</strong>
+                                <p>Ligue para o <strong>Disque 100</strong> ou converse com a coordenação e professores da sua escola.</p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div id="mensagem-resposta" class="hidden"></div>
-        </div>
-
-        <div class="ajuda-info">
-            <h3>Precisa de ajuda real?</h3>
-            <p>Procure a orientação educacional, direção, um professor de confiança ou ligue para o <strong>Disque 100</strong> (Direitos Humanos).</p>
-        </div>
-    </section>
-
-    <section id="quiz" class="section">
-        <h2><i class="fa-solid fa-circle-question"></i> Quiz: Teste seus Conhecimentos</h2>
-        <p>Responda às 5 perguntas abaixo e veja como agir no combate ao preconceito!</p>
-
-        <div id="quiz-container">
-            <div class="question" id="q1">
-                <p>1. Fazer "piadas" recorrentes sobre a cor da pele ou cabelo de um colega é considerado:</p>
-                <button class="quiz-btn" onclick="checkAnswer(1, false)">A) Apenas uma brincadeira inofensiva</button>
-                <button class="quiz-btn" onclick="checkAnswer(1, true)">B) Preconceito e Injúria Racial</button>
+                    <div class="escuta-form-card">
+                        <form id="form-escuta">
+                            <label for="desabafo">Como podemos te apoiar hoje?</label>
+                            <textarea id="desabafo" rows="5" placeholder="Escreva aqui o que está sentindo ou presenciando..." required></textarea>
+                            <button type="submit" class="btn btn-primary btn-block">Enviar Desabafo</button>
+                        </form>
+                        <div id="mensagem-resposta" class="response-message hidden"></div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="question hidden" id="q2">
-                <p>2. O que fazer ao presenciar um colega sofrendo discriminação na escola?</p>
-                <button class="quiz-btn" onclick="checkAnswer(2, true)">A) Apoiar o colega e avisar um professor ou pedagogo</button>
-                <button class="quiz-btn" onclick="checkAnswer(2, false)">B) Filmar e rir com os outros</button>
-            </div>
-
-            <div class="question hidden" id="q3">
-                <p>3. Isolar ou rir de um estudante por causa de uma deficiência é uma atitude de:</p>
-                <button class="quiz-btn" onclick="checkAnswer(3, true)">A) Capacitismo</button>
-                <button class="quiz-btn" onclick="checkAnswer(3, false)">B) Respeito</button>
+        <section id="quiz" class="section container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-circle-question"></i> Quiz Interativo</h2>
+                <p>Veja como agir para construir uma comunidade mais inclusiva.</p>
             </div>
 
-            <div class="question hidden" id="q4">
-                <p>4. Compartilhar memes preconceituosos em grupos de mensagem da turma é uma atitude correta?</p>
-                <button class="quiz-btn" onclick="checkAnswer(4, false)">A) Sim, se for só para descontrair</button>
-                <button class="quiz-btn" onclick="checkAnswer(4, true)">B) Não, espalhar preconceito online também fere e discrimina</button>
+            <div class="quiz-card">
+                <div class="quiz-progress">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+
+                <div id="quiz-questions">
+                    <div class="question-block" id="q1">
+                        <h3>1. Fazer "piadas" recorrentes sobre a cor da pele ou cabelo de um colega é considerado:</h3>
+                        <div class="options">
+                            <button class="quiz-btn" onclick="checkAnswer(1, false)">Apenas uma brincadeira inofensiva</button>
+                            <button class="quiz-btn" onclick="checkAnswer(1, true)">Preconceito e Injúria Racial</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block hidden" id="q2">
+                        <h3>2. O que fazer ao presenciar um colega sofrendo discriminação na escola?</h3>
+                        <div class="options">
+                            <button class="quiz-btn" onclick="checkAnswer(2, true)">Apoiar o colega e avisar um professor ou coordenação</button>
+                            <button class="quiz-btn" onclick="checkAnswer(2, false)">Filmar e compartilhar em grupos de redes sociais</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block hidden" id="q3">
+                        <h3>3. Isolar ou ridicularizar um estudante por causa de uma deficiência é uma atitude de:</h3>
+                        <div class="options">
+                            <button class="quiz-btn" onclick="checkAnswer(3, true)">Capacitismo</button>
+                            <button class="quiz-btn" onclick="checkAnswer(3, false)">Convivência normal</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block hidden" id="q4">
+                        <h3>4. Compartilhar memes preconceituosos em grupos da turma é aceitável?</h3>
+                        <div class="options">
+                            <button class="quiz-btn" onclick="checkAnswer(4, false)">Sim, desde que seja em tom de zoeira</button>
+                            <button class="quiz-btn" onclick="checkAnswer(4, true)">Não, discriminação virtual também fere e é inaceitável</button>
+                        </div>
+                    </div>
+
+                    <div class="question-block hidden" id="q5">
+                        <h3>5. Quem procurar na escola ao presenciar ou sofrer atos preconceituosos?</h3>
+                        <div class="options">
+                            <button class="quiz-btn" onclick="checkAnswer(5, true)">Professores, orientação educacional e direção</button>
+                            <button class="quiz-btn" onclick="checkAnswer(5, false)">Ninguém, é melhor não se envolver</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result hidden"></div>
             </div>
+        </section>
 
-            <div class="question hidden" id="q5">
-                <p>5. Quem você pode procurar na escola para relatar um ato preconceituoso?</p>
-                <button class="quiz-btn" onclick="checkAnswer(5, true)">A) Professores, coordenadores ou equipe de direção</button>
-                <button class="quiz-btn" onclick="checkAnswer(5, false)">B) Ninguém, é melhor guardar para si mesmo</button>
+        <section id="referencias" class="section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fa-solid fa-book-bookmark"></i> Materiais e Fontes Úteis</h2>
+                </div>
+                <div class="ref-grid">
+                    <a href="https://www.gov.br/mdh/pt-br" target="_blank" class="ref-card">
+                        <i class="fa-solid fa-landmark"></i>
+                        <span>Ministério dos Direitos Humanos</span>
+                    </a>
+                    <a href="https://www.unesco.org/pt/fieldoffice/brasilia" target="_blank" class="ref-card">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>UNESCO Brasil - Educação e Inclusão</span>
+                    </a>
+                    <a href="https://new.safernet.org.br/" target="_blank" class="ref-card">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>SaferNet Brasil - Segurança Digital</span>
+                    </a>
+                </div>
             </div>
-
-            <div id="quiz-result" class="hidden"></div>
-        </div>
-    </section>
-
-    <section id="referencias" class="section bg-light">
-        <h2><i class="fa-solid fa-book"></i> Referências e Fontes Confiáveis</h2>
-        <ul class="ref-list">
-            <li><a href="https://www.gov.br/mdh/pt-br" target="_blank">Ministério dos Direitos Humanos e da Cidadania</a></li>
-            <li><a href="https://www.unesco.org/pt/fieldoffice/brasilia" target="_blank">UNESCO Brasil - Educação e Inclusão</a></li>
-            <li><a href="https://new.safernet.org.br/" target="_blank">SaferNet Brasil - Combate aos Crimes de Ódio na Internet</a></li>
-        </ul>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Portal de Apoio ao Estudante | Projeto Acadêmico</p>
+        <p>&copy; 2026 Portal de Apoio ao Estudante | Projeto de Conscientização Social</p>
     </footer>
 
     <script src="script.js"></script>
