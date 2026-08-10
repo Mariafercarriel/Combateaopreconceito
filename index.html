@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal educativo sobre combate ao preconceito, respeito, diversidade, escuta e cidadania.">
+  <title>Vozes que Respeitam | Combate ao Preconceito</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="accessibility-bar">
+    <div class="container accessibility-inner">
+      <div class="acc-group">
+        <span class="acc-title"><i class="fa-solid fa-text-height"></i> Tamanho da Letra:</span>
+        <button id="increaseFont" type="button" title="Aumentar Fonte"><i class="fa-solid fa-plus"></i></button>
+        <button id="resetFont" type="button" title="Tamanho Normal">A</button>
+        <button id="decreaseFont" type="button" title="Diminuir Fonte"><i class="fa-solid fa-minus"></i></button>
+      </div>
+
+      <div class="acc-group">
+        <span class="acc-title"><i class="fa-solid fa-palette"></i> Cor do Fundo:</span>
+        <button id="themeLight" class="theme-btn light-btn" title="Fundo Claro"></button>
+        <button id="themePastel" class="theme-btn pastel-btn" title="Fundo Suave"></button>
+        <button id="themeDark" class="theme-btn dark-btn" title="Fundo Escuro"></button>
+        <button id="themeContrast" class="theme-btn contrast-btn" title="Alto Contraste"></button>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrapper">
+      <a href="#inicio" class="brand">
+        <span class="brand-icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
+        <span>
+          <strong class="font-title color-primary">Vozes que Respeitam</strong>
+          <small>Combate ao Preconceito</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#inicio">Início</a>
+        <a href="#entenda">Entenda</a>
+        <a href="#quiz">Quiz Central</a>
+        <a href="#escuta">Escuta</a>
+        <a href="#referencias">Referências</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section section">
+      <div class="container">
+        <div class="hero-center-card">
+          <div class="hero-badge-title">
+            <i class="fa-solid fa-heart-pulse"></i> PROJETO EDUCATIVO
+          </div>
+          <h1 class="main-title font-title">
+            Construindo caminhos para o <span class="highlight-text">respeito e a empatia</span>
+          </h1>
+          <p class="hero-description">
+            Um portal dedicado a conscientizar, acolher e combater o preconceito nas escolas e na sociedade.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag-pill tag-purple"><i class="fa-solid fa-users"></i> Diversidade</span>
+            <span class="tag-pill tag-teal"><i class="fa-solid fa-handshake"></i> Inclusão</span>
+            <span class="tag-pill tag-orange"><i class="fa-solid fa-shield-halved"></i> Respeito</span>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#quiz" class="btn btn-primary"><i class="fa-solid fa-gamepad"></i> Ir direto ao Quiz</a>
+            <a href="#entenda" class="btn btn-outline"><i class="fa-solid fa-book-open"></i> Aprender Mais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="entenda">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow color-orange">01 · CONHECIMENTO</span>
+          <h2 class="font-title color-primary">Entender para Transformar</h2>
+          <p>O preconceito é um julgamento prévio sem conhecimento real. Veja os principais conceitos:</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="info-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=400&q=80" alt="Jovens conversando" class="img-compact">
+            </div>
+            <span class="tag-pill tag-purple">Preconceito</span>
+            <h3 class="font-title">O que é?</h3>
+            <p>Atitudes ou opiniões preconcebidas sobre alguém por causa da sua cor, origem, gênero ou deficiência.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=400&q=80" alt="Grupo de amigos" class="img-compact">
+            </div>
+            <span class="tag-pill tag-teal">Discriminação</span>
+            <h3 class="font-title">Como ocorre?</h3>
+            <p>Ação prática de excluir ou tratar alguém mal devido a preconceitos acumulados.</p>
+          </article>
+
+          <article class="info-card">
+            <div class="card-image-box">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" alt="Pessoas reunidas" class="img-compact">
+            </div>
+            <span class="tag-pill tag-orange">Bullying</span>
+            <h3 class="font-title">Não é brincadeira</h3>
+            <p>Agressões verbais ou físicas intencionais e repetidas que causam dor e humilhação.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow color-teal">02 · DESAFIO INTERATIVO</span>
+          <h2 class="font-title color-teal">Quiz do Respeito</h2>
+          <p>Teste seus conhecimentos e descubra como agir contra a discriminação!</p>
+        </div>
+
+        <div class="quiz-center-box">
+          <div class="quiz-header">
+            <span id="questionCounter" class="quiz-step-tag">Pergunta 1 de 5</span>
+            <div class="score-badge">
+              <i class="fa-solid fa-star color-orange"></i> Pontos: <strong id="liveScore">0</strong>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+
+          <h3 id="questionText" class="quiz-question font-title">Carregando pergunta...</h3>
+
+          <div id="answers" class="answers-grid"></div>
+
+          <div class="quiz-actions">
+            <button id="nextQuestion" class="btn btn-primary" type="button" disabled>
+              Próxima Pergunta <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div id="quizResult" class="quiz-result-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="escuta">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow color-purple">03 · ACOLHIMENTO</span>
+          <h2 class="font-title color-primary">Portal de Escuta</h2>
+          <p>Escreva seu desabafo em nossa simulação educativa e receba uma mensagem de apoio.</p>
+        </div>
+
+        <div class="escuta-center-box">
+          <form id="listeningForm">
+            <div class="form-group">
+              <label for="name">Seu Nome ou Apelido (opcional):</label>
+              <input type="text" id="name" placeholder="Ex: Maria, Alex...">
+            </div>
+
+            <div class="form-group">
+              <label for="feelings">O que gostaria de compartilhar?</label>
+              <textarea id="feelings" rows="4" placeholder="Escreva aqui sua mensagem ou experiência..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary full-btn">
+              <i class="fa-solid fa-paper-plane"></i> Enviar Mensagem
+            </button>
+          </form>
+
+          <div id="supportMessage"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="referencias">
+      <div class="container">
+        <div class="section-heading text-center">
+          <span class="eyebrow color-orange">04 · FONTES</span>
+          <h2 class="font-title color-primary">Canais de Apoio Oficial</h2>
+        </div>
+        <div class="ref-grid">
+          <a class="ref-card" href="https://www.gov.br/mdh/pt-br" target="_blank" rel="noopener">
+            <i class="fa-solid fa-building-columns ref-icon color-purple"></i>
+            <div>
+              <strong>Ministério dos Direitos Humanos</strong>
+              <small>Políticas e canais oficiais de apoio.</small>
+            </div>
+          </a>
+          <a class="ref-card" href="https://www.safernet.org.br/" target="_blank" rel="noopener">
+            <i class="fa-solid fa-shield-cat ref-icon color-teal"></i>
+            <div>
+              <strong>SaferNet Brasil</strong>
+              <small>Combate aos crimes cibernéticos e do ódio online.</small>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="currentYear"></span> Vozes que Respeitam · Desenvolvido para a comunidade escolar.</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" title="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+/* ==========================================
+   VARIÁVEIS DE CORES E TEMAS DE FUNDO
+   ========================================== */
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+
+  /* Cores Coloridas de Fontes e Destaques */
+  --color-primary: #4f46e5;   /* Roxo / Índigo */
+  --color-teal: #0d9488;      /* Verde Água */
+  --color-orange: #ea580c;    /* Laranja */
+  --color-pink: #db2777;      /* Rosa */
+
+  --font-body: 'DM Sans', sans-serif;
+  --font-title: 'Montserrat', sans-serif;
+  --font-fun: 'Fredoka', cursive;
+
+  --font-scale: 1;
+}
+
+/* TEMA PASTEL / SUAVE */
+body.theme-pastel {
+  --bg-primary: #f0fdf4;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --text-main: #166534;
+  --text-muted: #3f6212;
+  --border-color: #bbf7d0;
+  --color-primary: #15803d;
+}
+
+/* TEMA ESCURO */
+body.theme-dark {
+  --bg-primary: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-card: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --color-primary: #818cf8;
+  --color-teal: #2dd4bf;
+  --color-orange: #fb923c;
+}
+
+/* TEMA ALTO CONTRASTE */
+body.theme-contrast {
+  --bg-primary: #000000;
+  --bg-surface: #000000;
+  --bg-card: #111111;
+  --text-main: #ffff00;
+  --text-muted: #ffffff;
+  --border-color: #ffff00;
+  --color-primary: #ffff00;
+  --color-teal: #00ffff;
+  --color-orange: #ff9900;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-size: calc(16px * var(--font-scale));
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* FONTES E CORES */
+.font-title { font-family: var(--font-title); }
+.color-primary { color: var(--color-primary); }
+.color-teal { color: var(--color-teal); }
+.color-orange { color: var(--color-orange); }
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* IMAGENS REDUZIDAS */
+img.img-compact {
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* BARRA DE ACESSIBILIDADE E TEMAS */
+.accessibility-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+
+.accessibility-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.acc-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.acc-group button {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.theme-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+
+.light-btn { background: #ffffff !important; border: 2px solid #ccc !important; }
+.pastel-btn { background: #dcfce7 !important; border: 2px solid #86efac !important; }
+.dark-btn { background: #0f172a !important; border: 2px solid #334155 !important; }
+.contrast-btn { background: #000000 !important; border: 2px solid #ffff00 !important; }
+
+/* HEADER */
+.site-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-icon {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+.main-nav { display: flex; gap: 15px; }
+.main-nav a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+
+.menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-main); cursor: pointer; }
+
+/* PRIMEIRA SEÇÃO (HERO EMOLDURADO COM FUNDO DESTACADO NO TÍTULO) */
+.section { padding: 40px 0; }
+
+.hero-center-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 35px 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.hero-badge-title {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #4338ca;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-weight: 8
