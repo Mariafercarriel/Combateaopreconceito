@@ -1,301 +1,538 @@
-Aqui está o código JavaScript completo e otimizado (script.js) com todos os botões funcionando e o ajuste de layout para manter as imagens menores e proporcionais.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal educativo sobre combate ao preconceito, respeito, diversidade, escuta e cidadania.">
+  <title>Vozes que Respeitam | Combate ao Preconceito</title>
 
-Código JavaScript (script.js)
-JavaScript
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-document.addEventListener('DOMContentLoaded', () => {
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-  // ==========================================
-  // 1. FERRAMENTAS DE ACESSIBILIDADE
-  // ==========================================
-  let fontScale = 1;
-  const maxScale = 1.25;
-  const minScale = 0.85;
-
-  document.getElementById('increaseFont')?.addEventListener('click', () => {
-    if (fontScale < maxScale) {
-      fontScale += 0.05;
-      document.documentElement.style.setProperty('--font-scale', fontScale);
-    }
-  });
-
-  document.getElementById('decreaseFont')?.addEventListener('click', () => {
-    if (fontScale > minScale) {
-      fontScale -= 0.05;
-      document.documentElement.style.setProperty('--font-scale', fontScale);
-    }
-  });
-
-  document.getElementById('contrastBtn')?.addEventListener('click', () => {
-    document.body.classList.toggle('high-contrast');
-    document.body.classList.remove('dark-mode');
-  });
-
-  document.getElementById('darkModeBtn')?.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    document.body.classList.remove('high-contrast');
-  });
-
-  // Menu Mobile Toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
-
-  menuToggle?.addEventListener('click', () => {
-    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
-    mainNav?.classList.toggle('active');
-  });
-
-  // Fechar menu ao clicar num link
-  mainNav?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('active');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Ano atual no rodapé
-  const yearEl = document.getElementById('currentYear');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // ==========================================
-  // 2. CARROSSEL DE IMAGENS
-  // ==========================================
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.getElementById('prevSlide');
-  const nextBtn = document.getElementById('nextSlide');
-  let currentSlide = 0;
-  let slideInterval;
-
-  function showSlide(index) {
-    if (slides.length === 0) return;
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
-
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === currentSlide);
-    });
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentSlide);
-    });
-  }
-
-  prevBtn?.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-    resetTimer();
-  });
-
-  nextBtn?.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-    resetTimer();
-  });
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', (e) => {
-      const slideIdx = parseInt(e.target.getAttribute('data-slide'));
-      showSlide(slideIdx);
-      resetTimer();
-    });
-  });
-
-  function startTimer() {
-    slideInterval = setInterval(() => showSlide(currentSlide + 1), 5000);
-  }
-
-  function resetTimer() {
-    clearInterval(slideInterval);
-    startTimer();
-  }
-
-  startTimer();
-
-  // ==========================================
-  // 3. PORTAL DE ESCUTA (SIMULAÇÃO)
-  // ==========================================
-  const listeningForm = document.getElementById('listeningForm');
-  const supportMessage = document.getElementById('supportMessage');
-
-  listeningForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nameInput = document.getElementById('name').value.trim();
-    const feelingsInput = document.getElementById('feelings').value.trim();
-
-    if (!feelingsInput) {
-      supportMessage.innerHTML = `<p class="error-msg">Por favor, escreva uma mensagem antes de enviar.</p>`;
-      return;
-    }
-
-    const displayName = nameInput ? nameInput : 'estudante';
-    supportMessage.innerHTML = `
-      <div class="alert-success">
-        <i class="fa-solid fa-circle-check"></i>
-        <div>
-          <strong>Obrigado por compartilhar, ${displayName}.</strong>
-          <p>Sua mensagem foi recebida na simulação. Lembre-se de que você não está sozinho(a) e pode sempre procurar apoio com um adulto de confiança na escola ou em casa.</p>
-        </div>
-      </div>
-    `;
-
-    listeningForm.reset();
-  });
-
-  // ==========================================
-  // 4. QUIZ INTERATIVO
-  // ==========================================
-  const quizData = [
-    {
-      question: "O que caracteriza o preconceito?",
-      answers: [
-        "Uma opinião fundamentada em pesquisas científicas.",
-        "Um julgamento prévio sem conhecimento real sobre o outro.",
-        "Um elogio sincero feito a um amigo."
-      ],
-      correct: 1
-    },
-    {
-      question: "O que fazer ao presenciar uma situação de discriminação na escola?",
-      answers: [
-        "Ignorar para não arrumar confusão.",
-        "Apoiar a vítima e buscar ajuda de um adulto responsável.",
-        "Gravar um vídeo e rir com os colegas."
-      ],
-      correct: 1
-    },
-    {
-      question: "Dizer 'foi só uma brincadeira' torna uma ofensa aceitável?",
-      answers: [
-        "Sim, desde que a pessoa peça desculpas depois.",
-        "Não, se a atitude gera dor ou constrangimento, deve ser evitada.",
-        "Sim, brincadeiras não causam impacto emocional."
-      ],
-      correct: 1
-    },
-    {
-      question: "O que é capacitismo?",
-      answers: [
-        "Discriminação e barreiras impostas a pessoas com deficiência.",
-        "Preconceito contra pessoas de outros países.",
-        "Exclusão baseada em idade."
-      ],
-      correct: 0
-    },
-    {
-      question: "Qual atitude ajuda a construir um ambiente respeitoso?",
-      answers: [
-        "Espalhar boatos e apelidos pejorativos.",
-        "Escutar com empatia e respeitar a diversidade.",
-        "Evitar conversar com pessoas diferentes de você."
-      ],
-      correct: 1
-    }
-  ];
-
-  let currentQuestion = 0;
-  let score = 0;
-  let answered = false;
-
-  const questionCounter = document.getElementById('questionCounter');
-  const questionText = document.getElementById('questionText');
-  const liveScore = document.getElementById('liveScore');
-  const progressBar = document.getElementById('progressBar');
-  const answersContainer = document.getElementById('answers');
-  const nextBtnQuiz = document.getElementById('nextQuestion');
-  const quizResult = document.getElementById('quizResult');
-
-  function loadQuestion() {
-    answered = false;
-    nextBtnQuiz.disabled = true;
-
-    const q = quizData[currentQuestion];
-    questionCounter.textContent = `Pergunta ${currentQuestion + 1} de ${quizData.length}`;
-    questionText.textContent = q.question;
-    liveScore.textContent = score;
-
-    const progress = ((currentQuestion + 1) / quizData.length) * 100;
-    progressBar.style.width = `${progress}%`;
-
-    answersContainer.innerHTML = '';
-
-    q.answers.forEach((ans, index) => {
-      const btn = document.createElement('button');
-      btn.className = 'answer-btn';
-      btn.textContent = ans;
-      btn.type = 'button';
-      btn.addEventListener('click', () => selectAnswer(index, q.correct));
-      answersContainer.appendChild(btn);
-    });
-  }
-
-  function selectAnswer(selectedIndex, correctIndex) {
-    if (answered) return;
-    answered = true;
-
-    const buttons = answersContainer.querySelectorAll('.answer-btn');
-
-    buttons.forEach((btn, index) => {
-      btn.disabled = true;
-      if (index === correctIndex) {
-        btn.classList.add('correct');
-      }
-      if (index === selectedIndex && selectedIndex !== correctIndex) {
-        btn.classList.add('incorrect');
-      }
-    });
-
-    if (selectedIndex === correctIndex) {
-      score += 10;
-      liveScore.textContent = score;
-    }
-
-    nextBtnQuiz.disabled = false;
-  }
-
-  nextBtnQuiz?.addEventListener('click', () => {
-    currentQuestion++;
-    if (currentQuestion < quizData.length) {
-      loadQuestion();
-    } else {
-      showQuizResult();
-    }
-  });
-
-  function showQuizResult() {
-    questionText.textContent = "Quiz Concluído!";
-    answersContainer.innerHTML = '';
-    nextBtnQuiz.style.display = 'none';
-
-    quizResult.innerHTML = `
-      <div class="result-box">
-        <h3>Sua pontuação final foi: <strong>${score} / ${quizData.length * 10}</strong></h3>
-        <p>${score >= 30 ? 'Excelente! Você demonstra ótimo conhecimento sobre respeito e empatia.' : 'Continue estudando os tópicos do portal para fortalecer suas atitudes de respeito!'}</p>
-        <button onclick="location.reload()" class="btn btn-primary" style="margin-top:15px;">
-          Refazer Quiz
+<body>
+  <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+    <div class="container accessibility-inner">
+      <span><i class="fa-solid fa-universal-access"></i> Acessibilidade</span>
+      <div class="accessibility-actions">
+        <button id="increaseFont" type="button" title="Aumentar fonte">
+          <i class="fa-solid fa-plus"></i> Fonte
+        </button>
+        <button id="decreaseFont" type="button" title="Diminuir fonte">
+          <i class="fa-solid fa-minus"></i> Fonte
+        </button>
+        <button id="contrastBtn" type="button" title="Ativar alto contraste">
+          <i class="fa-solid fa-circle-half-stroke"></i> Contraste
+        </button>
+        <button id="darkModeBtn" type="button" title="Ativar modo escuro">
+          <i class="fa-solid fa-moon"></i> Modo escuro
         </button>
       </div>
-    `;
-  }
+    </div>
+  </div>
 
-  if (questionText) loadQuestion();
+  <header class="site-header" id="inicio">
+    <div class="container nav-wrapper">
+      <a href="#inicio" class="brand" aria-label="Vozes que Respeitam - início">
+        <span class="brand-icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
+        <span>
+          <strong>Vozes que Respeitam</strong>
+          <small>Combate ao preconceito</small>
+        </span>
+      </a>
 
-  // ==========================================
-  // 5. BOTÃO VOLTAR AO TOPO
-  // ==========================================
-  const backToTopBtn = document.getElementById('backToTop');
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTopBtn?.classList.add('visible');
-    } else {
-      backToTopBtn?.classList.remove('visible');
-    }
-  });
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#entenda">Entenda</a>
+        <a href="#atitudes">Atitudes</a>
+        <a href="#escuta">Portal de Escuta</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#referencias">Referências</a>
+      </nav>
+    </div>
+  </header>
 
-  backToTopBtn?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  <main>
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <span class="eyebrow"><i class="fa-solid fa-heart"></i> Informação, respeito e acolhimento</span>
+          <h1 id="hero-title">Contra o preconceito, <span>escolha o respeito.</span></h1>
+          <p class="hero-text">
+            Este portal foi criado para ajudar estudantes a compreender o preconceito,
+            reconhecer atitudes discriminatórias e descobrir formas responsáveis de agir
+            diante de situações de desrespeito.
+          </p>
+          <div class="hero-buttons">
+            <a href="#entenda" class="btn btn-primary">
+              <i class="fa-solid fa-book-open"></i> Quero entender
+            </a>
+            <a href="#quiz" class="btn btn-outline">
+              <i class="fa-solid fa-circle-question"></i> Fazer o quiz
+            </a>
+          </div>
+          <div class="hero-note">
+            <i class="fa-solid fa-shield-heart"></i>
+            <span>Você merece ser tratado com dignidade, respeito e segurança.</span>
+          </div>
+        </div>
 
-});
+        <div class="hero-visual reveal">
+          <div class="image-card">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Grupo diverso de jovens reunidos sorrindo" class="img-hero">
+            <div class="floating-card floating-card-one">
+              <i class="fa-solid fa-people-group"></i>
+              <span>Diversidade</span>
+            </div>
+            <div class="floating-card floating-card-two">
+              <i class="fa-solid fa-handshake"></i>
+              <span>Respeito</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-section">
+      <div class="container quick-grid">
+        <article class="quick-card">
+          <div class="quick-icon"><i class="fa-solid fa-eye"></i></div>
+          <div>
+            <strong>Reconheça</strong>
+            <p>Identifique atitudes preconceituosas e discriminatórias.</p>
+          </div>
+        </article>
+        <article class="quick-card">
+          <div class="quick-icon"><i class="fa-solid fa-comments"></i></div>
+          <div>
+            <strong>Converse</strong>
+            <p>Procure diálogo e apoio quando uma situação ultrapassar limites.</p>
+          </div>
+        </article>
+        <article class="quick-card">
+          <div class="quick-icon"><i class="fa-solid fa-hands-helping"></i></div>
+          <div>
+            <strong>Acolha</strong>
+            <p>Escute sem culpar e ajude a pessoa a buscar proteção.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="entenda" aria-labelledby="entenda-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">01 · Conhecimento</span>
+          <h2 id="entenda-title">Entender é o primeiro passo para mudar.</h2>
+          <p>
+            Preconceito não é apenas uma opinião diferente. Ele pode envolver julgamentos,
+            estereótipos e atitudes que diminuem, excluem ou prejudicam pessoas ou grupos.
+          </p>
+        </div>
+
+        <div class="concept-grid">
+          <article class="concept-card reveal">
+            <div class="concept-image">
+              <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=400&q=80" alt="Jovens estudando juntos" class="img-card">
+            </div>
+            <div class="concept-content">
+              <span class="tag">Preconceito</span>
+              <h3>O que significa?</h3>
+              <p>
+                É um julgamento ou atitude prévia em relação a uma pessoa ou grupo,
+                muitas vezes baseado em características como aparência, origem, condição
+                social, deficiência, idade, gênero ou outros marcadores sociais.
+              </p>
+            </div>
+          </article>
+
+          <article class="concept-card reveal">
+            <div class="concept-image">
+              <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=400&q=80" alt="Crianças em atividade coletiva" class="img-card">
+            </div>
+            <div class="concept-content">
+              <span class="tag">Discriminação</span>
+              <h3>Como aparece?</h3>
+              <p>
+                Pode acontecer quando uma pessoa recebe tratamento desigual ou é excluída
+                por pertencer, ou ser percebida como pertencente, a determinado grupo.
+              </p>
+            </div>
+          </article>
+
+          <article class="concept-card reveal">
+            <div class="concept-image">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" alt="Equipe colaborando em uma mesa" class="img-card">
+            </div>
+            <div class="concept-content">
+              <span class="tag">Bullying</span>
+              <h3>É sempre uma brincadeira?</h3>
+              <p>
+                Não. Humilhações, ameaças, apelidos ofensivos, exclusão intencional e
+                agressões repetidas podem causar sofrimento e precisam ser levados a sério.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="info-banner reveal">
+          <div class="info-banner-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div>
+            <h3>Uma ideia importante</h3>
+            <p>
+              Dizer “foi só uma brincadeira” não apaga o impacto de uma atitude.
+              Respeito também significa perceber quando o outro está desconfortável.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" aria-labelledby="tipos-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">02 · Reconhecimento</span>
+          <h2 id="tipos-title">O preconceito pode assumir muitas formas.</h2>
+          <p>
+            Conhecer diferentes manifestações ajuda a perceber situações que, às vezes,
+            são normalizadas no cotidiano.
+          </p>
+        </div>
+
+        <div class="types-grid">
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-earth-americas"></i></div>
+            <h3>Xenofobia</h3>
+            <p>Hostilidade ou rejeição direcionada a pessoas por sua origem nacional ou cultural.</p>
+          </article>
+
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-person"></i></div>
+            <h3>Racismo</h3>
+            <p>Discriminação e desigualdade relacionadas a raça, cor ou características étnico-raciais.</p>
+          </article>
+
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-wheelchair"></i></div>
+            <h3>Capacitismo</h3>
+            <p>Preconceitos e barreiras que desvalorizam ou excluem pessoas com deficiência.</p>
+          </article>
+
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-people-arrows"></i></div>
+            <h3>Intolerância</h3>
+            <p>Recusa em respeitar pessoas por suas diferenças, crenças, costumes ou modos de viver.</p>
+          </article>
+
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-comments"></i></div>
+            <h3>Ofensa</h3>
+            <p>Palavras, apelidos e comentários usados para humilhar, constranger ou diminuir alguém.</p>
+          </article>
+
+          <article class="type-card reveal">
+            <div class="type-icon"><i class="fa-solid fa-user-group"></i></div>
+            <h3>Exclusão</h3>
+            <p>Impedir ou dificultar a participação de alguém em atividades, grupos ou espaços.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="atitudes" aria-labelledby="atitudes-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">03 · Ação</span>
+          <h2 id="atitudes-title">Pequenas atitudes podem transformar ambientes.</h2>
+          <p>
+            Combater o preconceito não depende apenas de grandes discursos.
+            Começa também nas escolhas que fazemos todos os dias.
+          </p>
+        </div>
+
+        <div class="action-layout">
+          <div class="action-image reveal">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Amigos de diferentes perfis reunidos" class="img-action">
+            <div class="image-caption">
+              <i class="fa-solid fa-quote-left"></i>
+              <p>“Respeitar é reconhecer que toda pessoa possui valor e dignidade.”</p>
+            </div>
+          </div>
+
+          <div class="steps-list">
+            <article class="step reveal">
+              <span class="step-number">01</span>
+              <div>
+                <h3>Não normalize a ofensa</h3>
+                <p>Se algo machuca ou humilha, não trate como “normal” apenas porque acontece com frequência.</p>
+              </div>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">02</span>
+              <div>
+                <h3>Escute antes de julgar</h3>
+                <p>Permita que a pessoa conte sua experiência e evite colocar a culpa nela pelo que aconteceu.</p>
+              </div>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">03</span>
+              <div>
+                <h3>Procure ajuda</h3>
+                <p>Em situações de violência, ameaça ou discriminação, converse com um adulto ou profissional de confiança.</p>
+              </div>
+            </article>
+            <article class="step reveal">
+              <span class="step-number">04</span>
+              <div>
+                <h3>Seja parte da solução</h3>
+                <p>Inclua, acolha, denuncie situações graves pelos canais adequados e incentive atitudes respeitosas.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section carousel-section" aria-labelledby="carousel-title">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">Galeria</span>
+          <h2 id="carousel-title">Diversidade se constrói com convivência.</h2>
+        </div>
+
+        <div class="carousel reveal" id="carousel">
+          <div class="carousel-track">
+            <article class="slide active">
+              <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Grupo de jovens reunidos" class="img-carousel">
+              <div class="slide-text">
+                <span>Convivência</span>
+                <h3>Aprender com as diferenças</h3>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80" alt="Pessoas caminhando juntas" class="img-carousel">
+              <div class="slide-text">
+                <span>Respeito</span>
+                <h3>Ninguém precisa ser igual para pertencer</h3>
+              </div>
+            </article>
+            <article class="slide">
+              <img src="https://images.unsplash.com/photo-1556484687-30636164638b?auto=format&fit=crop&w=800&q=80" alt="Pessoas unindo as mãos" class="img-carousel">
+              <div class="slide-text">
+                <span>Acolhimento</span>
+                <h3>Estender a mão também é uma escolha</h3>
+              </div>
+            </article>
+          </div>
+
+          <button class="carousel-btn prev" id="prevSlide" aria-label="Imagem anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next" id="nextSlide" aria-label="Próxima imagem">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <div class="carousel-dots" id="carouselDots" aria-label="Selecionar imagem">
+            <button class="dot active" data-slide="0" aria-label="Imagem 1"></button>
+            <button class="dot" data-slide="1" aria-label="Imagem 2"></button>
+            <button class="dot" data-slide="2" aria-label="Imagem 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section listening-section" id="escuta" aria-labelledby="escuta-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">04 · Acolhimento</span>
+          <h2 id="escuta-title">Portal de Escuta</h2>
+          <p>
+            Este espaço é uma simulação educativa. Você pode escrever o que gostaria
+            de dizer e receberá uma mensagem automática de acolhimento.
+          </p>
+        </div>
+
+        <div class="listening-grid">
+          <div class="listening-copy reveal">
+            <div class="quote-card">
+              <i class="fa-solid fa-quote-left"></i>
+              <p>Você não precisa enfrentar uma situação difícil sozinho.</p>
+            </div>
+
+            <h3>Quando procurar ajuda?</h3>
+            <ul class="help-list">
+              <li><i class="fa-solid fa-circle-check"></i> Quando alguém estiver te ameaçando ou humilhando.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Quando você presenciar uma situação de discriminação.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Quando estiver com medo de contar o que aconteceu.</li>
+              <li><i class="fa-solid fa-circle-check"></i> Quando não souber como agir sozinho.</li>
+            </ul>
+
+            <div class="adult-box">
+              <i class="fa-solid fa-person-chalkboard"></i>
+              <div>
+                <strong>Converse com alguém de confiança</strong>
+                <p>Professor, pedagogo, direção da escola, familiar ou outro adulto responsável pode ajudar.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="listening-form-card reveal">
+            <div class="form-header">
+              <span class="form-icon"><i class="fa-solid fa-ear-listen"></i></span>
+              <div>
+                <h3>Quero desabafar</h3>
+                <p>Simulação — nada será armazenado.</p>
+              </div>
+            </div>
+
+            <form id="listeningForm">
+              <label for="name">Como podemos te chamar? <span>(opcional)</span></label>
+              <input type="text" id="name" name="name" placeholder="Digite um nome ou apelido">
+
+              <label for="feelings">Escreva seu desabafo</label>
+              <textarea id="feelings" name="feelings" rows="5" placeholder="Escreva aqui o que você gostaria de compartilhar..."></textarea>
+
+              <button type="submit" class="btn btn-primary full-btn">
+                <i class="fa-solid fa-paper-plane"></i> Enviar para a simulação
+              </button>
+            </form>
+
+            <div id="supportMessage" class="support-message" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quiz" aria-labelledby="quiz-title">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <span class="eyebrow">05 · Aprenda brincando</span>
+          <h2 id="quiz-title">Quiz do Respeito</h2>
+          <p>Teste seus conhecimentos com 5 perguntas. Leia com atenção antes de responder.</p>
+        </div>
+
+        <div class="quiz-card reveal">
+          <div class="quiz-top">
+            <div>
+              <span id="questionCounter">Pergunta 1 de 5</span>
+              <h3 id="questionText">Carregando pergunta...</h3>
+            </div>
+            <div class="score-badge">
+              <i class="fa-solid fa-star"></i>
+              <span>Pontos: <strong id="liveScore">0</strong></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+
+          <div id="answers" class="answers"></div>
+
+          <div class="quiz-actions">
+            <button id="nextQuestion" class="btn btn-primary" type="button" disabled>
+              Próxima pergunta <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <div id="quizResult" class="quiz-result" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section references-section" id="referencias" aria-labelledby="references-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">06 · Pesquisa</span>
+          <h2 id="references-title">Referências confiáveis</h2>
+          <p>
+            Para estudar o tema com mais profundidade, consulte instituições públicas e materiais educativos reconhecidos.
+          </p>
+        </div>
+
+        <div class="references-list">
+          <a class="reference-card reveal" href="https://www.gov.br/mdh/pt-br" target="_blank" rel="noopener noreferrer">
+            <span class="reference-icon"><i class="fa-solid fa-building-columns"></i></span>
+            <span>
+              <strong>Ministério dos Direitos Humanos e da Cidadania</strong>
+              <small>Informações e políticas públicas relacionadas aos direitos humanos.</small>
+            </span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+
+          <a class="reference-card reveal" href="https://www.unicef.org/brazil/" target="_blank" rel="noopener noreferrer">
+            <span class="reference-icon"><i class="fa-solid fa-child-reaching"></i></span>
+            <span>
+              <strong>UNICEF Brasil</strong>
+              <small>Conteúdos e materiais sobre direitos de crianças e adolescentes.</small>
+            </span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+
+          <a class="reference-card reveal" href="https://www.safernet.org.br/" target="_blank" rel="noopener noreferrer">
+            <span class="reference-icon"><i class="fa-solid fa-laptop"></i></span>
+            <span>
+              <strong>SaferNet Brasil</strong>
+              <small>Orientações sobre cidadania digital e segurança na internet.</small>
+            </span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#inicio" class="brand footer-brand">
+          <span class="brand-icon"><i class="fa-solid fa-hands-holding-circle"></i></span>
+          <span>
+            <strong>Vozes que Respeitam</strong>
+            <small>Projeto educativo</small>
+          </span>
+        </a>
+        <p class="footer-text">
+          Informação para reconhecer. Respeito para transformar. Acolhimento para fortalecer.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Navegação</h3>
+        <a href="#entenda">Entenda o preconceito</a>
+        <a href="#atitudes">Atitudes</a>
+        <a href="#escuta">Portal de Escuta</a>
+        <a href="#quiz">Quiz</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Projeto</h3>
+        <p>Site educativo para atividade escolar.</p>
+        <p>HTML + CSS + JavaScript.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© <span id="currentYear"></span> Vozes que Respeitam.</span>
+        <span>Feito com respeito e educação.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
